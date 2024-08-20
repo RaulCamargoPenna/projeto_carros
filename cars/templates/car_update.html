@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="bg-gray-50 dark:bg-gray-900 h-full content-center">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-full lg:py-0">
+        <div class="w-1/2 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md  xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                    Create and account
+                </h1>
+                <!-- Modal body -->
+                    <form method="post" action="{% url 'cars:new_car_view' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <!-- {{ new_car_form }} -->
+                        <div class="grid gap-4 mb-4 sm:grid-cols-2 content-center">
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Modelo</label>
+                                {{ form.model }}
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marca</label>
+                                {{ form.brand }}
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ano de fabricação</label>
+                                {{ form.factory_year }}
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ano do modelo</label>
+                                {{ form.model_year }}
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Placa</label>
+                                {{ form.plate }}
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Valor</label>
+                                {{ form.value }}
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto</label>
+                                {{ form.photo }}
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button type="submit" class="text-gray-900 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-primary-800">
+                                Cadastrar
+                            </button>
+                            <button type="submit" class="text-gray-900 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-primary-800">
+                                Cancelar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script>
+
+    var class_inputs ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+    var class_input_file ="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+    
+    // Se eu quiser pegar por id o django coloca "id_nomecampo "
+    var model_input = document.getElementsByName("model")[0]
+    var brand_input = document.getElementsByName("brand")[0]
+    var factory_year_input = document.getElementsByName("factory_year")[0]
+    var model_year_input = document.getElementsByName("model_year")[0]
+    var plate_input = document.getElementsByName("plate")[0]
+    var value_input = document.getElementsByName("value")[0]
+    var photo_input = document.getElementsByName("photo")[0]
+
+    var  array_inputs = [model_input, brand_input, factory_year_input, model_year_input, plate_input, value_input, photo_input]
+    array_inputs.forEach(item => {
+        if (item.name === 'photo') {
+            item.classList.add(...class_input_file.split(" "))
+        } else {
+            item.classList.add(...class_inputs.split(" "))
+            if (item.name === 'value') {
+                item.setAttribute('step', '0.01')
+            }
+        }
+    })
+    
+</script>
+{% endblock %}
