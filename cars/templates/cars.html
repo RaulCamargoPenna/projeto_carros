@@ -1,14 +1,15 @@
 {% extends 'base.html'  %}
 {% block content %}
-<section class="mt-24 items-center justify-center text-center place-content-center">
-  <form method="GET" action="{% url 'cars:cars_list' %}">
-    <input type="text" class="p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="search" placeholder="Buscar carro...">
-    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Buscar</button>
-  </form>
+<section class="items-center justify-center text-center place-content-center">
 
   <section class="bg-white dark:bg-gray-900">
-    <div class="px-4 mx-auto max-w-screen-xl mb-20">
-        <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+    <form method="GET" action="{% url 'cars:cars_list' %}">
+      <input type="text" class="p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="search" placeholder="Buscar carro...">
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Buscar</button>
+    </form>
+
+    <div class="px-4 mx-auto max-w-screen-xl flex flex-col h-screen">
+        <div class="mx-auto max-w-screen-md text-center  lg:mb-12">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Alcance seu sonho agora!</h2>
             <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">Aqui você vai encontrar o que precisa com formas de pagamento facilitadas.</p>
         </div>
@@ -33,7 +34,7 @@
                     <li class="flex items-center space-x-3">
                         <!-- Icon -->
                         <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>Fabriação: {{ car.factory_year }}</span>
+                        <span>Fabricação: {{ car.factory_year }}</span>
                     </li>
                     <li class="flex items-center space-x-3">
                         <!-- Icon -->

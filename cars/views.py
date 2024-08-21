@@ -7,7 +7,7 @@ from cars.models import Car
 from django.db.models import Q
 from cars.forms import CarModelForm
 from django.views import View
-from django.views.generic import ListView, CreateView, DetailView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, TemplateView
 
     
 class CarsListView(ListView):
@@ -56,3 +56,14 @@ class CarUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('cars:car_detail', kwargs={'pk': self.object.pk})
+    
+
+
+class CarDeleteView(DeleteView):
+    model = Car
+    template_name = 'car_delete.html'
+    success_url = '/cars/'
+
+
+class AboutUs(TemplateView):
+    template_name = 'sobre_nos.html'
