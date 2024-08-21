@@ -7,6 +7,7 @@ from cars.views import NewCarCreateView, CarsListView, CarDetailView, CarUpdateV
 app_name = 'cars'
 
 urlpatterns = [
+    path('', CarsListView.as_view(), name='home'),
     path('cars/', CarsListView.as_view(), name='cars_list'),
     path('novo_carro/', NewCarCreateView.as_view(), name='new_car_view'),
     path('car/<int:pk>/', CarDetailView.as_view(), name='car_detail'),
